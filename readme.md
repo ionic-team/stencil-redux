@@ -49,3 +49,40 @@ export class StencilStore {
   }
 }
 ```
+
+`my-component.tsx`
+```javascript
+import { Component, h, Prop } from '@stencil/core';
+
+import { ConnectedComponent } from '@stencil/redux';
+
+@Component({
+  tag: 'stencil-store'
+})
+@ConnectedComponent()
+export class StencilStore {
+  store: Store;
+  
+  componentWillLoad() {
+    this.store = configureStore()
+  }
+  
+  mapStateToProps(state) {
+    const {
+      users: { current }
+    } = state;
+    
+    return {
+      current
+    }
+  }
+  
+  render() {
+    return (
+      <stencil-redux-store store={this.store}>
+        <rest-of-app />
+      </stencil-redux-store>
+    );
+  }
+}
+```
