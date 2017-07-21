@@ -78,3 +78,29 @@ export class StencilStore {
   }
 }
 ```
+
+Alternate syntax w/ member decorators
+`my-component.tsx`
+```javascript
+import { Component, h, Prop } from '@stencil/core';
+
+import { ConnectedComponent } from '@stencil/redux';
+
+@Component({
+  tag: 'stencil-store'
+})
+@ConnectedComponent()
+export class StencilStore {
+  
+  @Prop() @ConnectedProp()
+  get current(state) {
+    return state.users.current
+  }
+
+  render() {
+    return (
+      <div>Your name is {this.current.name}</div>
+    );
+  }
+}
+```
