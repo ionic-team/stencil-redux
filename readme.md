@@ -73,9 +73,7 @@ export class StencilStore {
   
   render() {
     return (
-      <stencil-redux-store store={this.store}>
-        <rest-of-app />
-      </stencil-redux-store>
+      <div>Your name is {this.name}</div>
     );
   }
 }
