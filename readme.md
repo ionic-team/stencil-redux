@@ -73,7 +73,7 @@ export class StencilStore {
   
   render() {
     return (
-      <div>Your name is {this.name}</div>
+      <div>Your name is {this.current.name}</div>
     );
   }
 }
