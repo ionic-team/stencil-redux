@@ -61,12 +61,6 @@ import { ConnectedComponent } from '@stencil/redux';
 })
 @ConnectedComponent()
 export class StencilStore {
-  store: Store;
-  
-  componentWillLoad() {
-    this.store = configureStore()
-  }
-  
   mapStateToProps(state) {
     const {
       users: { current }
