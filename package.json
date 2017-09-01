@@ -14,10 +14,16 @@
     "url": "git+https://github.com/ionic-team/stencil-starter.git"
   },
   "dependencies": {
-    "@stencil/core": "next"
+    "@stencil/core": "next",
+    "@types/lodash.isplainobject": "^4.0.3",
+    "lodash.isplainobject": "^4.0.6"
   },
   "devDependencies": {
-    "@stencil/dev-server": "latest"
+    "@stencil/dev-server": "latest",
+    "redux": "^3.0.0"
+  },
+  "peerDependencies": {
+    "redux": "^3.0.0"
   },
   "author": "Ionic Team",
   "license": "MIT",
