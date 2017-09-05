@@ -57,7 +57,7 @@ export default class Subscription {
   unsubscribe: () => {};
   listeners: { [key: string]: Function };
 
-  constructor(store, parentSub, onStateChange) {
+  constructor(store: any, parentSub: any, onStateChange: any) {
     this.store = store;
     this.parentSub = parentSub;
     this.onStateChange = onStateChange;
@@ -80,8 +80,8 @@ export default class Subscription {
 
   trySubscribe() {
     if (!this.unsubscribe) {
-      this.unsubscribe = this.parentSub;
-        ? this.parentSub.addNestedSub(this.onStateChange);
+      this.unsubscribe = this.parentSub
+        ? this.parentSub.addNestedSub(this.onStateChange)
         : this.store.subscribe(this.onStateChange);
 
       this.listeners = createListenerCollection();

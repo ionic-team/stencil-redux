@@ -10,8 +10,10 @@ export function defaultMergeProps(stateProps: KeyValueObject, dispatchProps: Key
 
 export function wrapMergePropsFunc(mergeProps: Function) {
   return function initMergePropsProxy(
-    dispatch, { displayName, pure, areMergedPropsEqual }
+    dispatch: any,
+    { displayName, pure, areMergedPropsEqual }: KeyValueObject
   ) {
+    dispatch;
     let hasRunOnce = false;
     let mergedProps: KeyValueObject;
 
