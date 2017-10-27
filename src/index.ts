@@ -1,9 +1,4 @@
-export * from './components';
 export {
-  ActiveRouter,
-  Listener,
-  LocationSegments,
-  RouterHistory,
-  MatchOptions,
-  MatchResults
+  ContextStore,
+  ReduxAction,
 } from './global/interfaces';
