@@ -1,0 +1,53 @@
+{
+  "name": "@stencil/redux",
+  "version": "0.0.1",
+  "description": "Stencil Redux - A simple redux-connector for Stencil-built web components",
+  "main": "dist/collection/index.js",
+  "browser": "dist/stencilredux.js",
+  "types": "dist/collection/index.d.ts",
+  "collection": "dist/collection/collection-manifest.json",
+  "files": [
+    "dist/"
+  ],
+  "scripts": {
+    "build": "stencil build",
+    "dev": "sd concurrent \"stencil build --dev --watch\" \"stencil-dev-server\" ",
+    "deploy": "np",
+    "serve": "stencil-dev-server",
+    "start": "npm run dev",
+    "test": "jest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ionic-team/stencil-redux.git"
+  },
+  "dependencies": {
+    "path-to-regexp": "^1.7.0"
+  },
+  "devDependencies": {
+    "@stencil/core": "0.0.7-0",
+    "@stencil/dev-server": "0.0.17",
+    "@stencil/utils": "latest",
+    "@types/jest": "^20.0.8",
+    "jest": "^20.0.4",
+    "np": "^2.16.0",
+    "ts-jest": "^20.0.10"
+  },
+  "author": "Ionic Team",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/ionic-team/stencil-redux"
+  },
+  "jest": {
+    "moduleFileExtensions": [
+      "ts",
+      "tsx",
+      "js"
+    ],
+    "transform": {
+      ".(ts|tsx)": "<rootDir>/node_modules/ts-jest/preprocessor.js"
+    },
+    "testRegex": "/__tests__/.*(test|spec)\\.(ts|tsx)$"
+  },
+  "homepage": "https://github.com/ionic-team/stencil-redux"
+}
