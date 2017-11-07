@@ -1,7 +1,9 @@
-export declare class ContextStore {
+export declare class Store {
   getState: () => any;
   getStore: () => any;
   setStore: (any: any) => void;
   mapStateToProps: (component: any, props: any) => void;
   mapDispatchToProps: (component: any, props: any) => void;
 };
+
+export type Action = Function;

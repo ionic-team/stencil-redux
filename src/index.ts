@@ -1,4 +1,4 @@
 export {
-  ContextStore,
-  ReduxAction,
+  Store,
+  Action,
 } from './global/interfaces';
