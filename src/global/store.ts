@@ -1,4 +1,4 @@
-import { ContextStore } from './interfaces';
+import { Store } from './interfaces';
 
 declare var Context: any;
 
@@ -50,5 +50,5 @@ Context.store = (function() {
     getState,
     mapDispatchToProps,
     mapStateToProps
-  } as ContextStore;
+  } as Store;
 })();
