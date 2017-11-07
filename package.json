@@ -25,7 +25,7 @@
     "path-to-regexp": "^1.7.0"
   },
   "devDependencies": {
-    "@stencil/core": "0.0.7-0",
+    "@stencil/core": "0.0.6-19",
     "@stencil/dev-server": "0.0.17",
     "@stencil/utils": "latest",
     "@types/jest": "^20.0.8",

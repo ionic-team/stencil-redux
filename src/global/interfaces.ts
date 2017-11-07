@@ -1,4 +1,4 @@
-export declare class Store {
+export interface Store {
   getState: () => any;
   getStore: () => any;
   setStore: (any: any) => void;
