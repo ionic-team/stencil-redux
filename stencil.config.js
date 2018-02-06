@@ -4,5 +4,5 @@ exports.config = {
   generateWWW: true,
   bundles: [
   ],
-  global: 'src/global/store.ts'
+  globalScript: 'src/global/store.ts'
 };

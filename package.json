@@ -2,9 +2,9 @@
   "name": "@stencil/redux",
   "version": "0.0.3",
   "description": "Stencil Redux - A simple redux-connector for Stencil-built web components",
-  "main": "dist/collection/index.js",
+  "main": "dist/stencilredux.js",
   "browser": "dist/stencilredux.js",
-  "types": "dist/collection/index.d.ts",
+  "types": "dist/types/index.d.ts",
   "collection": "dist/collection/collection-manifest.json",
   "files": [
     "dist/"
@@ -25,8 +25,8 @@
     "path-to-regexp": "^1.7.0"
   },
   "devDependencies": {
-    "@stencil/core": "0.0.6-19",
-    "@stencil/dev-server": "0.0.17",
+    "@stencil/core": "^0.2.2",
+    "@stencil/dev-server": "latest",
     "@stencil/utils": "latest",
     "@types/jest": "^20.0.8",
     "jest": "^20.0.4",
