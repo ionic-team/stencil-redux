@@ -1,0 +1,14 @@
+{
+  "name": "@stencil/redux",
+  "version": "0.1.0",
+  "description": "Redux bindings for Stencil",
+  "main": "dist/index.js",
+  "scripts": {
+    "start": "tsc --watch"
+  },
+  "author": "Ionic Team",
+  "license": "MIT",
+  "devDependencies": {
+    "typescript": "^2.7.1"
+  }
+}
