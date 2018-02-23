@@ -1,6 +1,6 @@
 exports.config = {
   namespace: 'stencilredux',
   generateDistribution: true,
-  generateWWW: true,
+  generateWWW: false,
   globalScript: 'src/global/store.ts'
 };

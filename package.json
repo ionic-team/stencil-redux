@@ -21,9 +21,6 @@
     "type": "git",
     "url": "git+https://github.com/ionic-team/stencil-redux.git"
   },
-  "dependencies": {
-    "path-to-regexp": "^1.7.0"
-  },
   "devDependencies": {
     "@stencil/core": "^0.6.7",
     "@stencil/dev-server": "latest",
