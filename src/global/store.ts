@@ -3,9 +3,9 @@ import { Store } from './interfaces';
 declare var Context: any;
 
 Context.store = (function() {
-  let _store;
+  let _store: Store;
 
-  function setStore(store) {
+  function setStore(store: Store) {
     _store = store;
   }
 
@@ -17,20 +17,20 @@ Context.store = (function() {
     return _store;
   }
 
-  function mapDispatchToProps(component, props) {
+  function mapDispatchToProps(component: any, props: any) {
     Object.keys(props).forEach(actionName => {
       const action = props[actionName];
       Object.defineProperty(component, actionName, {
-        get: () => (...args) => action(...args)(_store.dispatch, _store.getState),
+        get: () => (...args: any[]) => action(...args)(_store.dispatch, _store.getState),
         configurable: true,
         enumerable: true
       })
     });
   }
 
-  function mapStateToProps(component, mapState) {
+  function mapStateToProps(component: any, mapState: Function) {
     // TODO: Don't listen for each component
-    const _mapStateToProps = (_component, _mapState) => {
+    const _mapStateToProps = (_component: any, _mapState: any) => {
       const mergeProps = mapState(_store.getState());
       Object.keys(mergeProps).forEach(newPropName => {
         let newPropValue = mergeProps[newPropName];
