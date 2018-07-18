@@ -16,7 +16,7 @@ import logger from 'redux-logger'; // Add-on you might want
 import rootReducer from '../reducers/index';
 
 const configureStore = (preloadedState: any) =>
-  createStore(rootReducer, preloadedState, applyMiddleware(logger, thunk));
+  createStore(rootReducer, preloadedState, applyMiddleware(thunk, logger));
 
 export { configureStore };
 ```
