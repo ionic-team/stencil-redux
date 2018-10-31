@@ -39,9 +39,11 @@ Context.store = (function() {
       });
     };
 
-    _store.subscribe(() => _mapStateToProps(component, mapState));
+    const unsubscribe = _store.subscribe(() => _mapStateToProps(component, mapState));
 
     _mapStateToProps(component, mapState);
+
+    return unsubscribe;
   }
 
   return {
