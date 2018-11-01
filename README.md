@@ -69,9 +69,11 @@ export class MyComponent {
   @State() name: string;
  
   changeName: Action;
-  
+
+  private unsubscribe: () => void;
+   
   componentWillLoad() {
-    this.store.mapStateToProps(this, (state) => {
+    this.unsubscribe = this.store.mapStateToProps(this, (state) => {
       const {
         myReducer: { name }
       } = state;
@@ -87,6 +89,10 @@ export class MyComponent {
  
   doNameChange(newName: string) {
     this.changeName(newName);
+  }
+
+  componentDidUnload() {
+    this.unsubscribe();
   }
 }
 ```
