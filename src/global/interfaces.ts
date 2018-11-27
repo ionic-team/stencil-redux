@@ -1,5 +1,5 @@
 export interface Store {
-  dispatch: () => any;
+  dispatch: (action: any, _: any) => any;
   subscribe: (cb: Function) => any;
   getState: () => any;
   getStore: () => any;
