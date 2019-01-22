@@ -30,6 +30,9 @@
     "np": "^2.16.0",
     "ts-jest": "^20.0.10"
   },
+  "peerDependencies": {
+    "redux": "^3.7.2"
+  },
   "author": "Ionic Team",
   "license": "MIT",
   "bugs": {
