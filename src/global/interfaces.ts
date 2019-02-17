@@ -1,11 +1,16 @@
-export interface Store {
-  dispatch: (action: any, _: any) => any;
-  subscribe: (cb: (...args: any[]) => any) => any;
-  getState: () => any;
-  getStore: () => any;
-  setStore: (store: any) => void;
-  mapStateToProps: (component: any, props: any) => () => void;
-  mapDispatchToProps: (component: any, props: any) => void;
+import { Action, AnyAction, Store as ReduxStore, Unsubscribe } from 'redux';
+
+export interface Store<S = any, A extends Action = AnyAction> {
+  getState: () => S;
+  getStore: () => ReduxStore<S, A>;
+  setStore: (store: ReduxStore<S, A>) => void;
+  mapStateToProps: <C extends R, R>(component: C, mapper: (state: S) => R) => Unsubscribe;
+  mapDispatchToProps: <C extends P, P>(component: C, props: P) => void;
 }
 
+/**
+ * @deprecated See README.md for new usage.
+ */
 export type Action = (...args: any[]) => any;
+
+export { Unsubscribe };

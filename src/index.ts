@@ -1,4 +1,1 @@
-export {
-  Store,
-  Action,
-} from './global/interfaces';
+export * from './global/interfaces';

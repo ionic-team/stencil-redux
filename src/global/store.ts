@@ -1,11 +1,13 @@
+import { Store as ReduxStore } from 'redux';
+
 import { Store } from './interfaces';
 
 declare var Context: any;
 
-Context.store = (() => {
-  let _store: Store;
+Context.store = ((): Store => {
+  let _store: ReduxStore;
 
-  const setStore = (store: Store) => {
+  const setStore = (store: ReduxStore) => {
     _store = store;
   };
 
@@ -21,7 +23,7 @@ Context.store = (() => {
     Object.keys(props).forEach(actionName => {
       const action = props[actionName];
       Object.defineProperty(component, actionName, {
-        get: () => (...args: any[]) => _store.dispatch(action(...args), _store),
+        get: () => (...args: any[]) => _store.dispatch(action(...args)),
         configurable: true,
         enumerable: true,
       });
@@ -52,5 +54,5 @@ Context.store = (() => {
     getState,
     mapDispatchToProps,
     mapStateToProps,
-  } as Store;
+  };
 })();
