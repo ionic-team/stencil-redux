@@ -14,7 +14,13 @@
     "dev": "stencil build --es5 --dev --watch --serve --no-open --debug",
     "deploy": "np",
     "start": "npm run dev",
-    "test": "jest"
+    "test": "jest",
+    "lint": "tslint --config tslint.json --project tsconfig.json"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "npm run lint"
+    }
   },
   "repository": {
     "type": "git",
@@ -23,9 +29,13 @@
   "devDependencies": {
     "@stencil/core": "^0.18.0",
     "@types/jest": "^24.0.5",
+    "husky": "^1.3.1",
     "jest": "^24.1.0",
     "np": "^4.0.2",
-    "ts-jest": "^23.10.5"
+    "redux": "^4.0.1",
+    "ts-jest": "^23.10.5",
+    "tslint": "^5.12.1",
+    "tslint-ionic-rules": "0.0.21"
   },
   "peerDependencies": {
     "redux": "^4.0.1"
