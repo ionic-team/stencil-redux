@@ -22,13 +22,13 @@
   },
   "devDependencies": {
     "@stencil/core": "^0.18.0",
-    "@types/jest": "^20.0.8",
-    "jest": "^20.0.4",
-    "np": "^2.16.0",
-    "ts-jest": "^20.0.10"
+    "@types/jest": "^24.0.5",
+    "jest": "^24.1.0",
+    "np": "^4.0.2",
+    "ts-jest": "^23.10.5"
   },
   "peerDependencies": {
-    "redux": "^3.7.2"
+    "redux": "^4.0.1"
   },
   "author": "Ionic Team",
   "license": "MIT",
