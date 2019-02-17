@@ -21,7 +21,7 @@ Context.store = (function() {
     Object.keys(props).forEach(actionName => {
       const action = props[actionName];
       Object.defineProperty(component, actionName, {
-        get: () => (...args: any[]) => action(...args)(_store.dispatch, _store.getState),
+        get: () => (...args: any[]) => _store.dispatch(action(...args), _store),
         configurable: true,
         enumerable: true
       })
