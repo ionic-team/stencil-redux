@@ -2,8 +2,8 @@
   "name": "@stencil/redux",
   "version": "0.0.4",
   "description": "Stencil Redux - A simple redux-connector for Stencil-built web components",
-  "main": "dist/stencilredux.js",
-  "browser": "dist/stencilredux.js",
+  "main": "dist/index.js",
+  "module": "dist/esm/es5/index.js",
   "types": "dist/types/index.d.ts",
   "collection": "dist/collection/collection-manifest.json",
   "files": [
@@ -11,9 +11,8 @@
   ],
   "scripts": {
     "build": "stencil build",
-    "dev": "sd concurrent \"stencil build --dev --watch\" \"stencil-dev-server\" ",
+    "dev": "stencil build --es5 --dev --watch --serve --no-open --debug",
     "deploy": "np",
-    "serve": "stencil-dev-server",
     "start": "npm run dev",
     "test": "jest"
   },
@@ -22,9 +21,7 @@
     "url": "git+https://github.com/ionic-team/stencil-redux.git"
   },
   "devDependencies": {
-    "@stencil/core": "^0.6.7",
-    "@stencil/dev-server": "latest",
-    "@stencil/utils": "latest",
+    "@stencil/core": "^0.18.0",
     "@types/jest": "^20.0.8",
     "jest": "^20.0.4",
     "np": "^2.16.0",
