@@ -46,16 +46,5 @@
   "bugs": {
     "url": "https://github.com/ionic-team/stencil-redux"
   },
-  "jest": {
-    "moduleFileExtensions": [
-      "ts",
-      "tsx",
-      "js"
-    ],
-    "transform": {
-      ".(ts|tsx)": "<rootDir>/node_modules/ts-jest/preprocessor.js"
-    },
-    "testRegex": "/__tests__/.*(test|spec)\\.(ts|tsx)$"
-  },
   "homepage": "https://github.com/ionic-team/stencil-redux"
 }
