@@ -1,6 +1,6 @@
 {
   "name": "@stencil/redux",
-  "version": "0.0.4",
+  "version": "0.1.0",
   "description": "Stencil Redux - A simple redux-connector for Stencil-built web components",
   "main": "dist/index.js",
   "module": "dist/esm/es5/index.js",
