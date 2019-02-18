@@ -1,5 +1,5 @@
 import { createStore } from 'redux';
-import { Store } from '../interfaces';
+import { Store } from '../../src/global/interfaces';
 
 declare global {
   namespace NodeJS {
@@ -12,7 +12,7 @@ declare global {
 }
 
 (global as any).Context = {};
-import '../store';
+import '../../src/global/store';
 
 describe('@stencil/redux', () => {
 

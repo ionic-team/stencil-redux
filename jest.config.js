@@ -13,4 +13,6 @@ module.exports = {
       },
     },
   },
+  testRegex: 'test/.*\.(ts|tsx)',
+  testMatch: null,
 };
