@@ -112,7 +112,7 @@ import { RootState } from '../../redux/reducers';
   styleUrl: 'my-component.scss'
 })
 export class MyComponent {
-  @Prop({ context: 'store' }) store: Store<Action, RootState>;
+  @Prop({ context: 'store' }) store: Store<RootState, Action>;
   @Prop({ mutable: true }) name: string;
 
   changeName!: typeof changeName;
