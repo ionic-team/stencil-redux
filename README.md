@@ -137,3 +137,45 @@ export class MyComponent {
   }
 }
 ```
+
+### Usage with `redux-thunk`
+
+Some Redux middleware, such as `redux-thunk`, alter the store's `dispatch()` function, resulting in type mismatches with mapped actions in your components.
+
+To properly type mapped actions in your components (properties whose values are set by `store.mapDispatchToProps()`), you can use the following type:
+
+```typescript
+import { ThunkAction } from 'redux-thunk';
+
+export type Unthunk<T> = T extends (...args: infer A) => ThunkAction<infer R, any, any, any>
+  ? (...args: A) => R
+  : T;
+```
+
+#### Example
+
+```typescript
+// redux/user/actions.ts
+
+import { ThunkAction } from 'redux-thunk';
+
+export const changeName = (name: string): ThunkAction<Promise<void>, RootState, void, Action> => async (dispatch, getState) => {
+  await fetch(...); // some async operation
+};
+```
+
+In the component below, the type of `this.changeName` is extracted from the action type to be `(name: string) => Promise<void>`.
+
+```typescript
+// components/my-component/my-component.tsx
+
+import { changeName } from '../../redux/actions';
+
+export class MyComponent {
+  changeName!: Unthunk<typeof changeName>;
+
+  componentWillLoad() {
+    this.store.mapDispatchToProps(this, { changeName });
+  }
+}
+```
