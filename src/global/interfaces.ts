@@ -5,7 +5,7 @@ export interface Store<S = any, A extends Action = AnyAction> {
   getStore: () => ReduxStore<S, A>;
   setStore: (store: ReduxStore<S, A>) => void;
   mapStateToProps: <C extends R, R>(component: C, mapper: (state: S) => R) => Unsubscribe;
-  mapDispatchToProps: <C extends P, P>(component: C, props: P) => void;
+  mapDispatchToProps: <C extends { [K in keyof P]: any }, P>(component: C, props: P) => void;
 }
 
 /**
