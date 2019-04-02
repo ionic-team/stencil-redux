@@ -7,7 +7,6 @@ A simple redux connector for Stencil-built web components inspired by [`react-re
 ```
 npm install @stencil/redux
 npm install redux
-npm install -D @types/redux
 ```
 
 ## Usage
