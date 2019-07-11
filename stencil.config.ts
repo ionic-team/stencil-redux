@@ -6,5 +6,4 @@ export const config: Config = {
     { type: 'dist' },
     { type: 'www', serviceWorker: null },
   ],
-  globalScript: 'src/global/store.ts'
 };

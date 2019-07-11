@@ -1,27 +1,21 @@
-import { createStore } from 'redux';
-import { Store } from '../../src/global/interfaces';
-
-declare global {
-  namespace NodeJS {
-    interface Global {
-      Context: {
-        store: Store;
-      }
-    }
-  }
-}
-
-(global as any).Context = {};
-import '../../src/global/store';
+import { Action, createStore } from 'redux';
+import { StoreService } from '../../src/global/store';
 
 describe('@stencil/redux', () => {
 
   describe('global/store', () => {
-
+    let storeService: StoreService;
     it('should return same redux store', () => {
-      const store = createStore(() => {});
-      global.Context.store.setStore(store);
-      expect(global.Context.store.getStore()).toBe(store);
+      function counter(state = { app: {} }, action: Action<any>) {
+        switch (action.type) {
+          default:
+            return state;
+        }
+      }
+      const store = createStore(counter);
+      storeService = StoreService.getInstance(store);
+      expect(storeService.getStore()).toBe(store);
+      expect(storeService.getState()).toEqual({ app: {} });
     });
 
   });

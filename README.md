@@ -18,10 +18,10 @@ Stencil Redux uses the [`redux`](https://github.com/reduxjs/redux/) library unde
 ```typescript
 // redux/reducers.ts
 
-import { combineReducers } from 'redux';
+import { combineReducers } from "redux";
 
 // Import feature reducers and state interfaces.
-import { TodoState, todos } from './todos/reducers';
+import { TodoState, todos } from "./todos/reducers";
 
 // This interface represents app state by nesting feature states.
 export interface RootState {
@@ -30,7 +30,7 @@ export interface RootState {
 
 // Combine feature reducers into a single root reducer
 export const rootReducer = combineReducers({
-  todos,
+  todos
 });
 ```
 
@@ -39,20 +39,18 @@ export const rootReducer = combineReducers({
 ```typescript
 // redux/actions.ts
 
-import { RootState } from './reducers';
+import { RootState } from "./reducers";
 
 // Import feature action interfaces
-import { TodoAction } from './todos/actions';
+import { TodoAction } from "./todos/actions";
 
 // Export all feature actions for easier access.
-export * from './todos/actions';
+export * from "./todos/actions";
 
 // Combine feature action interfaces into a base type. Use union types to
 // combine feature interfaces.
 // https://www.typescriptlang.org/docs/handbook/advanced-types.html#union-types
-export type Action = (
-  TodoAction
-);
+export type Action = TodoAction;
 ```
 
 ### Configure the Store
@@ -60,67 +58,73 @@ export type Action = (
 ```typescript
 // redux/store.ts
 
-import { Store, applyMiddleware, createStore } from 'redux';
-import thunk from 'redux-thunk'; // add-on you may want
-import logger from 'redux-logger'; // add-on you may want
+import { Store, applyMiddleware, createStore } from "redux";
+import thunk from "redux-thunk"; // add-on you may want
+import logger from "redux-logger"; // add-on you may want
 
-import { RootState, rootReducer } from './reducers';
+import { RootState, rootReducer } from "./reducers";
 
-export const store: Store<RootState> = createStore(rootReducer, applyMiddleware(thunk, logger));
+export const store: Store<RootState> = createStore(
+  rootReducer,
+  applyMiddleware(thunk, logger)
+);
 ```
 
 ### Configure Store in Root Component
 
 ```typescript
-
 // components/my-app/my-app.tsx
 
-import { Store } from '@stencil/redux';
-
-import { Action } from '../../redux/actions';
-import { RootState } from '../../redux/reducers';
-import { store } from '../../redux/store';
+import { StoreService } from "@stencil/redux";
+import { Action } from "../../redux/actions";
+import { RootState } from "../../redux/reducers";
+import { store } from "../../redux/store";
 
 @Component({
-  tag: 'my-app',
-  styleUrl: 'my-app.scss'
+  tag: "my-app",
+  styleUrl: "my-app.scss"
 })
 export class MyApp {
-  @Prop({ context: 'store' }) store: Store<RootState, Action>;
-
-  componentWillLoad() {
-    this.store.setStore(store);
+  private _storeService: StoreService;
+  @Prop({ context: "store" }) store: Store<RootState, Action>;
+  constructor() {
+    this._storeService = StoreService.getInstance(store);
   }
 }
 ```
 
 ### Map state and dispatch to props
 
-:memo: *Note*: Because the mapped props are technically changed *within* the component, `mutable: true` is required for `@Prop` definitions that utilize the store. See the [Stencil docs](https://stenciljs.com/docs/properties#prop-value-mutability) for info.
+:memo: _Note_: Because the mapped props are technically changed _within_ the component, `mutable: true` is required for `@Prop` definitions that utilize the store. See the [Stencil docs](https://stenciljs.com/docs/properties#prop-value-mutability) for info.
 
 ```typescript
 // components/my-component/my-component.tsx
 
-import { Store, Unsubscribe } from '@stencil/redux';
+import { StoreService, Unsubscribe } from "@stencil/redux";
 
-import { Action, changeName } from '../../redux/actions';
-import { RootState } from '../../redux/reducers';
+import { Action, changeName } from "../../redux/actions";
+import { RootState } from "../../redux/reducers";
 
 @Component({
-  tag: 'my-component',
-  styleUrl: 'my-component.scss'
+  tag: "my-component",
+  styleUrl: "my-component.scss"
 })
 export class MyComponent {
-  @Prop({ context: 'store' }) store: Store<RootState, Action>;
+  private _storeService: StoreService;
+
   @Prop({ mutable: true }) name: string;
 
   changeName!: typeof changeName;
 
   unsubscribe!: Unsubscribe;
-
+  constructor() {
+    this._storeService = StoreService.getInstance();
+  }
   componentWillLoad() {
     this.unsubscribe = this.store.mapStateToProps(this, state => {
-      const { user: { name } } = state;
+      const {
+        user: { name }
+      } = state;
       return { name };
     });
 
@@ -144,9 +148,11 @@ Some Redux middleware, such as `redux-thunk`, alter the store's `dispatch()` fun
 To properly type mapped actions in your components (properties whose values are set by `store.mapDispatchToProps()`), you can use the following type:
 
 ```typescript
-import { ThunkAction } from 'redux-thunk';
+import { ThunkAction } from "redux-thunk";
 
-export type Unthunk<T> = T extends (...args: infer A) => ThunkAction<infer R, any, any, any>
+export type Unthunk<T> = T extends (
+  ...args: infer A
+) => ThunkAction<infer R, any, any, any>
   ? (...args: A) => R
   : T;
 ```
@@ -168,7 +174,7 @@ In the component below, the type of `this.changeName` is extracted from the acti
 ```typescript
 // components/my-component/my-component.tsx
 
-import { changeName } from '../../redux/actions';
+import { changeName } from "../../redux/actions";
 
 export class MyComponent {
   changeName!: Unthunk<typeof changeName>;

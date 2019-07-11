@@ -5,9 +5,7 @@
  */
 
 
-import '@stencil/core';
-
-
+import { HTMLStencilElement, JSXBase } from '@stencil/core/internal';
 
 
 export namespace Components {
@@ -15,31 +13,28 @@ export namespace Components {
 }
 
 declare global {
-  interface StencilElementInterfaces {
-
-  }
-
-  interface StencilIntrinsicElements {
-
-  }
-
 
 
   interface HTMLElementTagNameMap {
 
   }
-
-  interface ElementTagNameMap {
-
-  }
-
-
-  export namespace JSX {
-    export interface Element {}
-    export interface IntrinsicElements extends StencilIntrinsicElements {
-      [tagName: string]: any;
-    }
-  }
-  export interface HTMLAttributes extends StencilHTMLAttributes {}
-
 }
+
+declare namespace LocalJSX {
+
+
+  interface IntrinsicElements {
+
+  }
+}
+
+export { LocalJSX as JSX };
+
+
+declare module "@stencil/core" {
+  export namespace JSX {
+    interface IntrinsicElements extends LocalJSX.IntrinsicElements {}
+  }
+}
+
+
