@@ -1,5 +1,6 @@
 import { Action, createStore } from 'redux';
-import { StoreService } from '../../src/global/store';
+
+import { StoreService } from '../../src/store';
 
 describe('@stencil/redux', () => {
 
