@@ -179,3 +179,34 @@ export class MyComponent {
   }
 }
 ```
+
+#### Migration
+
+If you were using the version 0.0.4, to migrate properly into the 0.1.0 actions must be updated. The `dispatch` is [no longer passed](https://github.com/ionic-team/stencil-redux/commit/e8b2e624a403253b2a8d1db748f7979edb7e350f) into the Action.
+
+
+```diff
+// components/my-component/my-component.action.ts
+- import { Dispatch } from 'redux';
+
+export enum MenuActions {
+  OPEN_MENU = 'OPEN_MENU'
+}
+
+export interface OpenMenuAction {
+  type: MenuActions.OPEN_MENU;
+}
+
+- export function openMenu(): Function {
+-   return (dispatch: Dispatch<any>) => {
+-     return dispatch({
++ export function openMenu(): OpenMenuAction {
++   return {
+      type: MenuActions.CLOSE_CONFIRMATION_MENU
+-     });
+-   }
++ };
+}
+
+export type MenuActionsTypes = OpenMenuAction;
+```
