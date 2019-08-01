@@ -74,6 +74,7 @@ export const store: Store<RootState> = createStore(rootReducer, applyMiddleware(
 ```typescript
 
 // components/my-app/my-app.tsx
+import '@stencil/redux';
 
 import { Store } from '@stencil/redux';
 
