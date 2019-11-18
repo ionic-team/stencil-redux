@@ -8,9 +8,4 @@ export interface Store<S = any, A extends ReduxAction = AnyAction> {
   mapDispatchToProps: <C extends { [K in keyof P]: any }, P>(component: C, props: P) => void;
 }
 
-/**
- * @deprecated See README.md for new usage.
- */
-export type Action = (...args: any[]) => any;
-
 export { Unsubscribe };
