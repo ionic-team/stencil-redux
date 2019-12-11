@@ -1,6 +1,6 @@
-import { Action, AnyAction, Store as ReduxStore, Unsubscribe } from 'redux';
+import { Action as ReduxAction, AnyAction, Store as ReduxStore, Unsubscribe } from 'redux';
 
-export interface Store<S = any, A extends Action = AnyAction> {
+export interface Store<S = any, A extends ReduxAction = AnyAction> {
   getState: () => S;
   getStore: () => ReduxStore<S, A>;
   setStore: (store: ReduxStore<S, A>) => void;

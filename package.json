@@ -28,10 +28,10 @@
   },
   "devDependencies": {
     "@stencil/core": "^0.18.0",
-    "@types/jest": "^24.0.5",
+    "@types/jest": "24.0.0",
     "@types/redux": "^3.6.0",
     "husky": "^3.0.2",
-    "jest": "^24.1.0",
+    "jest": "24.1.0",
     "np": "^5.0.0",
     "redux": "^4.0.1",
     "ts-jest": "^24.0.0",
