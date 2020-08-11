@@ -75,22 +75,22 @@ export const store: Store<RootState> = createStore(rootReducer, applyMiddleware(
 
 // components/my-app/my-app.tsx
 
-import { Store } from '@stencil/redux';
+import { store } from '@stencil/redux';
 
 import { Action } from '../../redux/actions';
 import { RootState } from '../../redux/reducers';
-import { store } from '../../redux/store';
+import { initialStore } from '../../redux/store';
 
 @Component({
   tag: 'my-app',
   styleUrl: 'my-app.scss'
 })
 export class MyApp {
-  @Prop({ context: 'store' }) store: Store<RootState, Action>;
 
   componentWillLoad() {
-    this.store.setStore(store);
+    store.setStore(initialStore);
   }
+
 }
 ```
 
@@ -101,7 +101,7 @@ export class MyApp {
 ```typescript
 // components/my-component/my-component.tsx
 
-import { Store, Unsubscribe } from '@stencil/redux';
+import { store, Unsubscribe } from '@stencil/redux';
 
 import { Action, changeName } from '../../redux/actions';
 import { RootState } from '../../redux/reducers';
@@ -111,7 +111,6 @@ import { RootState } from '../../redux/reducers';
   styleUrl: 'my-component.scss'
 })
 export class MyComponent {
-  @Prop({ context: 'store' }) store: Store<RootState, Action>;
   @Prop({ mutable: true }) name: string;
 
   changeName!: typeof changeName;
@@ -119,12 +118,12 @@ export class MyComponent {
   unsubscribe!: Unsubscribe;
 
   componentWillLoad() {
-    this.unsubscribe = this.store.mapStateToProps(this, state => {
+    this.unsubscribe = store.mapStateToProps(this, state => {
       const { user: { name } } = state;
       return { name };
     });
 
-    this.store.mapDispatchToProps(this, { changeName });
+    store.mapDispatchToProps(this, { changeName });
   }
 
   componentDidUnload() {
@@ -174,7 +173,7 @@ export class MyComponent {
   changeName!: Unthunk<typeof changeName>;
 
   componentWillLoad() {
-    this.store.mapDispatchToProps(this, { changeName });
+    store.mapDispatchToProps(this, { changeName });
   }
 }
 ```
