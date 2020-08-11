@@ -2,11 +2,9 @@
   "compilerOptions": {
     "allowUnreachableCode": false,
     "declaration": false,
+    "esModuleInterop": true,
     "experimentalDecorators": true,
-    "lib": [
-      "dom",
-      "es2017"
-    ],
+    "lib": ["dom", "es2017"],
     "moduleResolution": "node",
     "module": "esnext",
     "target": "es2017",
@@ -14,12 +12,6 @@
     "jsx": "react",
     "jsxFactory": "h"
   },
-  "include": [
-    "src",
-    "types/jsx.d.ts"
-  ],
-  "exclude": [
-    "node_modules",
-    "src/**/__tests__/*.ts"
-  ]
+  "include": ["src", "types/jsx.d.ts"],
+  "exclude": ["node_modules", "src/**/__tests__/*.ts"]
 }
