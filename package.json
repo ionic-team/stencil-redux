@@ -12,7 +12,7 @@
   "scripts": {
     "build": "stencil build",
     "start": "stencil build --es5 --dev --watch --serve --no-open --debug",
-    "release": "np",
+    "release": "npm run build && np",
     "test": "jest"
   },
   "repository": {
@@ -25,7 +25,7 @@
     "jest": "^26.3.0",
     "np": "^6.4.0",
     "redux": "^4.0.1",
-    "ts-jest": "^26.1.4",
+    "ts-jest": "^26.2.0",
     "typescript": "^3.9.7"
   },
   "peerDependencies": {
