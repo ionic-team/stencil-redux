@@ -66,7 +66,7 @@ import logger from 'redux-logger'; // add-on you may want
 
 import { RootState, rootReducer } from './reducers';
 
-export const store: Store<RootState> = createStore(rootReducer, applyMiddleware(thunk, logger));
+export const initialStore: Store<RootState> = createStore(rootReducer, applyMiddleware(thunk, logger));
 ```
 
 ### Configure Store in Root Component
