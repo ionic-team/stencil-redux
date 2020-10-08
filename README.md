@@ -126,7 +126,7 @@ export class MyComponent {
     store.mapDispatchToProps(this, { changeName });
   }
 
-  componentDidUnload() {
+  disconnectedCallback() {
     this.unsubscribe();
   }
 
