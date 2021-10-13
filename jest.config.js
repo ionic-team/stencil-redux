@@ -6,13 +6,10 @@ module.exports = {
         // warnOnly: true,
       },
       tsConfig: {
-        types: [
-          "node",
-          "jest",
-        ],
+        types: ['node', 'jest'],
       },
     },
   },
-  testRegex: 'test/.*\.(ts|tsx)',
+  testRegex: 'test/.*.(ts|tsx)',
   testMatch: null,
 };

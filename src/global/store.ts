@@ -2,9 +2,7 @@ import { Store as ReduxStore } from 'redux';
 
 import { Store } from './interfaces';
 
-declare var Context: any;
-
-Context.store = ((): Store => {
+export const store = ((): Store => {
   let _store: ReduxStore;
 
   const setStore = (store: ReduxStore) => {
